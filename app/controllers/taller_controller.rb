@@ -30,7 +30,7 @@ class TallerController < ApplicationController
 	   #result = Nokogiri::HTML(resultAux)
        #result = Net::HTTP.get_response(URI.parse('https://s3.amazonaws.com/files.principal/texto.txt'))
        result = Net::HTTP.get(URI.parse('https://s3.amazonaws.com/files.principal/texto.txt'))
-       hash   = Digest::SHA256.digest result
+       hash   = Digest::SHA256.hexdigest result
        render text: { "hash" => hash, "text" => result}
    end
 end
